@@ -36,7 +36,13 @@
 * Akamai Security Research https://www.akamai.com/blog/security-research
 * Algolia https://www.algolia.com/blog
 * Amazon Science https://www.amazon.science/blog
+* Anthropic Alignment Science https://alignment.anthropic.com/
 * Anthropic Engineering https://www.anthropic.com/engineering
+* Anthropic Frontier Red Team https://www.anthropic.com/research/team/frontier-red-team
+* Anthropic News https://www.anthropic.com/news
+* Anthropic Research https://www.anthropic.com/research
+* Anthropic Transformer Circuits https://transformer-circuits.pub/
+* Apple Developer News https://developer.apple.com/news/
 * Apple Machine Learning Research https://machinelearning.apple.com/
 * Apple Security Research https://security.apple.com/blog/
 * Appnexus https://techblog.appnexus.com/
@@ -51,7 +57,17 @@
 * Avenue Code http://blog.avenuecode.com/
 * AWS https://aws.amazon.com/blogs/aws/
 * AWS Architecture Blog https://aws.amazon.com/blogs/architecture/
+* AWS Big Data Blog https://aws.amazon.com/blogs/big-data/
+* AWS Compute Blog https://aws.amazon.com/blogs/compute/
+* AWS Containers Blog https://aws.amazon.com/blogs/containers/
+* AWS Database Blog https://aws.amazon.com/blogs/database/
+* AWS Developer Tools Blog https://aws.amazon.com/blogs/developer/
+* AWS DevOps & Developer Productivity Blog https://aws.amazon.com/blogs/devops/
+* AWS Machine Learning Blog https://aws.amazon.com/blogs/machine-learning/
+* AWS Networking & Content Delivery Blog https://aws.amazon.com/blogs/networking-and-content-delivery/
+* AWS Open Source Blog https://aws.amazon.com/blogs/opensource/
 * AWS Security Blog https://aws.amazon.com/blogs/security/
+* AWS Storage Blog https://aws.amazon.com/blogs/storage/
 
 #### B companies
 * Babbel https://www.babbel.com/en/magazine/category/babbel-bytes
@@ -75,6 +91,7 @@
 * Cerner http://engineering.cerner.com/
 * Check Point Research https://research.checkpoint.com/
 * Cisco Talos https://blog.talosintelligence.com/
+* Claude Blog (Anthropic) https://claude.com/blog
 * Clever https://engineering.clever.com/
 * ClickHouse https://clickhouse.com/blog
 * Cloudera https://www.cloudera.com/blog.html
@@ -130,6 +147,7 @@
 * Figma https://www.figma.com/blog/engineering/
 * Findmypast http://tech.findmypast.com/
 * Finn.no http://tech.finn.no/
+* Firebase https://firebase.blog/
 * Flickr http://code.flickr.net/
 * Flipkart https://blog.flipkart.tech/
 * Fly.io https://fly.io/blog/
@@ -144,7 +162,11 @@
 * GitLab https://about.gitlab.com/blog/
 * GoDaddy https://godaddy.github.io/engineering/
 * Gojek https://medium.com/gojekengineering
+* Google AI https://blog.google/technology/ai/
+* Google Bug Hunters https://bughunters.google.com/blog
 * Google Cloud https://cloud.google.com/blog/
+* Google Cloud Developers & Practitioners https://cloud.google.com/blog/topics/developers-practitioners
+* Google Cloud Security https://cloud.google.com/blog/products/identity-security
 * Google Cloud Threat Intelligence (Mandiant) https://cloud.google.com/blog/topics/threat-intelligence
 * Google DeepMind https://deepmind.google/discover/blog/
 * Google Developers https://developers.googleblog.com/
@@ -153,6 +175,7 @@
 * Google Research https://research.google/blog/
 * Google Security Blog https://security.googleblog.com/
 * Google Testing Blog https://testing.googleblog.com/
+* Google Threat Analysis Group https://blog.google/threat-analysis-group/
 * GoSquared https://www.gosquared.com/blog/category/engineering
 * Grab http://engineering.grab.com/
 * Grafana Labs https://grafana.com/blog/
@@ -214,6 +237,7 @@
 * Mercari https://engineering.mercari.com/en/
 * Meta https://engineering.fb.com/
 * Meta AI Research https://engineering.fb.com/category/ai-research/
+* Meta Security Engineering https://engineering.fb.com/category/security/
 * Microsoft DevBlogs https://devblogs.microsoft.com/
 * Microsoft Python Engineering https://devblogs.microsoft.com/python/
 * Microsoft Research https://www.microsoft.com/en-us/research/blog/
@@ -225,6 +249,7 @@
 * Mozilla Automation Team https://planet.mozilla.org/ateam/
 * Mozilla Hacks https://hacks.mozilla.org/
 * Mozilla Release Engineering https://planet.mozilla.org/releng/
+* Mozilla Security Blog https://blog.mozilla.org/security/
 * Myntra https://medium.com/myntra-engineering
 
 #### N companies
@@ -245,6 +270,7 @@
 * Okta https://developer.okta.com/blog/
 * OLX https://tech.olx.com/
 * OpenAI https://openai.com/news/
+* OpenAI Developers https://developers.openai.com/blog/
 
 #### P companies
 * Palantir https://blog.palantir.com/
@@ -266,7 +292,6 @@
 
 #### Q companies
 * Quarkslab https://blog.quarkslab.com/
-* Quora https://engineering.quora.com/
 
 #### R companies
 * Ramp https://engineering.ramp.com/
@@ -387,6 +412,7 @@
 * 0xADADA https://0xadada.pub/
 
 #### A individuals
+* A List Apart https://alistapart.com/
 * Aaron Patterson http://tenderlovemaking.com/
 * Abu Ashraf Masnun http://masnun.com/
 * Adam Johnson https://adamj.eu/tech/
@@ -398,6 +424,7 @@
 * Alex Russell https://infrequently.org/
 * Amit Merchant https://www.amitmerchant.com/
 * Amos Wenger (fasterthanlime) https://fasterthanli.me/
+* Andrea Palmieri https://andpalmier.com/
 * Andrew Bancroft http://www.andrewcbancroft.com/
 * Andy Pavlo https://www.cs.cmu.edu/~pavlo/blog/
 * Antirez http://antirez.com/latest/0
@@ -406,7 +433,7 @@
 * Ariya Hidayat https://ariya.io/
 * Armin Ronacher http://lucumr.pocoo.org/
 * Arthur O'Dwyer https://quuxplusone.github.io/blog/
-* Axel Rauschmayer http://www.2ality.com/
+* Axel Rauschmayer (2ality) https://2ality.com/
 
 #### B individuals
 * Bad Concurrency http://bad-concurrency.blogspot.com/
@@ -415,6 +442,8 @@
 * Bartlomiej Filipek https://www.cppstories.com/
 * Bartosz Ciechanowski https://ciechanow.ski/
 * Ben Hawkes (Isosceles) https://blog.isosceles.com/
+* Ben Hoyt https://benhoyt.com/
+* Ben Northrop http://www.bennorthrop.com/
 * Bjørn Johansen https://bjornjohansen.com/
 * Blundell's Android Tutorials http://blog.blundellapps.co.uk
 * Bob Nystrom https://journal.stuffwithstuff.com/
@@ -431,6 +460,7 @@
 
 #### C individuals
 * Carlos Becker https://carlosbecker.com
+* Catalin Pit https://catalins.tech/
 * Charity Majors https://charity.wtf/
 * Chen Hui Jing https://www.chenhuijing.com/blog/
 * Chip Huyen https://huyenchip.com/blog/
@@ -440,6 +470,7 @@
 * CSS-Tricks https://css-tricks.com/
 
 #### D individuals
+* DaedTech (Erik Dietrich) https://daedtech.com/
 * Daily JS https://medium.com/dailyjs
 * Dan Abramov https://overreacted.io/
 * Dan Luu https://danluu.com/
@@ -451,6 +482,7 @@
 * Dave Cheney https://dave.cheney.net/
 * David Walsh https://davidwalsh.name/
 * Dean Hume http://deanhume.com/
+* deletescape https://deletescape.ch/
 * Denis Bakhvalov https://easyperf.net/notes/
 * Dennis Felsing https://hookrace.net/
 * Dereuromark http://www.dereuromark.de/
@@ -480,10 +512,11 @@
 * Federico Cargnelutti https://blog.fedecarg.com/
 * Federico Tomassetti https://tomassetti.me/
 * Filippo Valsorda https://words.filippo.io/
+* Flavio Copes https://flaviocopes.com/blog/
 * Freek Van der Herten https://freek.dev/
 
 #### G individuals
-* Gergely Orosz (The Pragmatic Engineer) https://newsletter.pragmaticengineer.com/
+* Gergely Orosz (The Pragmatic Engineer) https://blog.pragmaticengineer.com/
 * Gleb Bahmutov https://glebbahmutov.com/blog/
 * Glyph Lefkowitz https://blog.glyph.im/
 * Graham King https://www.darkcoding.net/
@@ -496,7 +529,7 @@
 * Henrik Lau Eriksson https://conductofcode.io/
 * Henrik Warne https://henrikwarne.com/
 * Herb Sutter https://herbsutter.com/
-* High Scalability http://highscalability.com/
+* High Scalability https://highscalability.com/
 * Hillel Wayne https://www.hillelwayne.com/post/
 * Huon Wilson http://huonw.github.io/
 * Hynek Schlawack https://hynek.me/articles/
@@ -507,6 +540,7 @@
 * Idontgetoutmuch's Weblog https://idontgetoutmuch.wordpress.com/
 * Ilija Eftimov http://ieftimov.com/
 * Ilya Grigorik https://ilya.grigorik.com/
+* Increment https://increment.com/
 * Itamar Turner-Trauring https://codewithoutrules.com
 
 #### J individuals
@@ -518,17 +552,21 @@
 * James Forshaw https://www.tiraniddo.dev/
 * James Hague http://prog21.dadgum.com/
 * James Long https://jlongster.com/
+* James Stanier (The Engineering Manager) https://www.theengineeringmanager.com/
 * Jamie Brandon https://www.scattered-thoughts.net/
 * Jamis Buck http://weblog.jamisbuck.org/
 * Jan Lelis https://idiosyncratic-ruby.com/
+* Jason Fried https://world.hey.com/jason
 * Jay Alammar https://jalammar.github.io/
 * Jay Fields http://blog.jayfields.com
+* Jay Little https://jaylittle.com/post/
 * Jeff Atwood https://blog.codinghorror.com/
 * Jeff Preshing http://preshing.com/
 * Jeremy Kun https://jeremykun.com/
 * Jerry Gamblin https://jerrygamblin.com/
 * Jesal Gadhia https://jes.al/
 * Jessie Frazelle https://blog.jessfraz.com/
+* Jimmy Bogard https://www.jimmybogard.com/
 * Joe Armstrong https://joearms.github.io/
 * Joe Nelson https://begriffs.com/
 * Joel Spolsky https://www.joelonsoftware.com/
@@ -538,6 +576,7 @@
 * Jon Skeet https://codeblog.jonskeet.uk/
 * Jonathan Dekhtiar http://www.born2data.com/
 * Jonathan Snook https://snook.ca/
+* Jos Visser https://josvisser.substack.com/
 * Josh Comeau https://www.joshwcomeau.com/
 * Josh Haberman http://blog.reverberate.org/
 * Josh Sherman https://joshtronic.com/
@@ -548,7 +587,9 @@
 
 #### K individuals
 * K. Harrison https://useyourloaf.com/
+* K. Scott Allen (OdeToCode) https://odetocode.com/blogs/scott
 * Kai Hendry https://hendry.iki.fi/
+* Karl Hughes https://www.karllhughes.com/
 * Kent Beck https://newsletter.kentbeck.com/
 * Kent C. Dodds https://kentcdodds.com/blog
 * Kevin Beaumont (DoublePulsar) https://doublepulsar.com/
@@ -562,7 +603,7 @@
 * Lambda the Ultimate http://lambda-the-ultimate.org/
 * Larry Land https://lg.io/
 * Lazarus Lazaridis https://iridakos.com
-* Lea Verou http://lea.verou.me/
+* Lea Verou https://lea.verou.me/
 * Life Plus Linux http://lifepluslinux.blogspot.com/
 * Lilian Weng https://lilianweng.github.io/
 * LiveOverflow https://liveoverflow.com/
@@ -598,12 +639,14 @@
 * Mitchell Hashimoto https://mitchellh.com/writing
 * Monica Dinculescu https://meowni.ca/
 * Monstermuffin https://blog.muffn.io/
+* Mukesh Murugan https://codewithmukesh.com/
 * Murat Demirbas https://muratbuffalo.blogspot.com/
 * Mykhailo Kozik http://mishadoff.com/
 
 #### N individuals
 * Nate Berkopec http://www.nateberkopec.com/
 * Ned Batchelder https://nedbatchelder.com/blog/
+* Neil Green https://neilonsoftware.com/blog/
 * Nelson Elhage https://blog.nelhage.com/
 * Nic Raboy https://www.thepolyglotdeveloper.com/blog/
 * Nick Craver https://nickcraver.com/blog/
@@ -635,6 +678,7 @@
 * Phil Eaton https://notes.eatonphil.com/
 * Philip Walton https://philipwalton.com/
 * Philipp Oppermann https://os.phil-opp.com/
+* Piccalilli https://piccalil.li/
 * Pony Foo https://ponyfoo.com/
 * Piotr Pasich http://piotrpasich.com/
 
@@ -652,8 +696,10 @@
 * Reuven Lerner https://lernerpython.com/blog/
 * Rob Allen https://akrabat.com/
 * Robert C. Martin http://blog.cleancoder.com/
+* Robert Grosse (polybdenum) https://blog.polybdenum.com/
 * Robin Ward https://eviltrout.com/
 * Robin Wilson http://blog.rtwilson.com/
+* Rodney Brooks https://rodneybrooks.com/blog/
 * Ruslan Spivak https://ruslanspivak.com/
 * Russ Cox https://research.swtch.com/
 
@@ -665,12 +711,13 @@
 * Schakko https://schakko.de
 * Scott Hanselman http://www.hanselman.com/blog/
 * Scott Johnson http://www.fuzzyblog.io/blog/
-* Sebastian Raschka https://sebastianraschka.com/blog/
+* Sebastian Raschka (Ahead of AI) https://magazine.sebastianraschka.com/
 * Simon Willison https://simonwillison.net/
 * Smashing Magazine https://www.smashingmagazine.com/
 * Soatok https://soatok.blog/
 * Srinivas Tamada https://www.9lessons.info/
 * Stack Abuse http://www.stackabuse.com/
+* StaffEng https://staffeng.com/
 * Stanko Tadić https://muffinman.io
 * Stefan Parker http://codebeforethehorse.tumblr.com/
 * Stephen Colebourne http://blog.joda.org/
@@ -691,6 +738,7 @@
 * Tom MacWright https://macwright.com/
 * Trey Hunner https://treyhunner.com/
 * Troy Hunt https://www.troyhunt.com/
+* Tyler Jewell https://tylerjewell.substack.com/
 
 #### U individuals
 * Una Kravets https://una.im/
@@ -716,12 +764,14 @@
 
 #### Z individuals
 * Zach Holman https://zachholman.com/
+* Zed Shaw https://learncodethehardway.com/blog/
 * Zolmeister https://zolmeister.com/
 
 ### Products/Technologies
 
 #### A technologies
 * Android https://android-developers.googleblog.com/
+* Angular https://blog.angular.dev/
 
 #### B technologies
 * Bootstrap.com https://blog.getbootstrap.com/
@@ -733,11 +783,15 @@
 * Crystal https://crystal-lang.org/
 
 #### D technologies
+* Dart https://medium.com/dartlang
 * Deno https://deno.com/blog
 * DuckDB https://duckdb.org/news/
 
 #### E technologies
 * Elixir https://elixir-lang.org/blog/
+
+#### F technologies
+* Flutter https://medium.com/flutter
 
 #### G technologies
 * Go https://go.dev/blog/
