@@ -9,6 +9,7 @@ Please ensure your pull request adheres to the following guidelines:
 - For company blogs, make sure that 80% of content is technical (posts about interesting technical challenges, lessons they've learned, etc). No PR, self-promoting posts.
 - For individual blogs, as long as posts are mostly technical (80% technical as well), and has a decent number of followers, I'm happy to add them.
 - After making changes to the README, run `bundle install` to install the dependencies and then the opml generation script (`./generate_opml.rb`) to update the opml file.
+- To find blogs that are no longer reachable, run `python3 scripts/check_links.py --markdown report.md` (needs `pip install -r scripts/requirements.txt`).
 
 ## Running the OPML Generation Script with Docker
 If you do not have Ruby readily available the following steps can be used to run the OPML generation script with Docker:

@@ -1,0 +1,84 @@
+# Builds the cross-blog search index from every RSS feed in engineering_blogs.opml
+# and publishes it (together with search/index.html) to GitHub Pages.
+#
+# One-time setup: repository Settings -> Pages -> "Build and deployment" -> Source: "GitHub Actions".
+# Then run this workflow once by hand (Actions -> "Build search index" -> Run workflow).
+# The page is served at https://<owner>.github.io/<repo>/ afterwards.
+name: Build search index
+
+on:
+  schedule:
+    - cron: '17 4 * * *'          # daily, 04:17 UTC
+  workflow_dispatch:
+  push:
+    branches: [master]
+    paths:
+      - 'search/**'
+      - 'scripts/build_search_index.py'
+      - 'scripts/requirements.txt'
+      - 'engineering_blogs.opml'
+      - '.github/workflows/search-index.yml'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Fetch feeds and build index
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Build site
+        env:
+          # Optional repository variable to override the URL the previous index is merged from
+          # (only needed when the site is served from a custom domain).
+          SEARCH_SITE_URL: ${{ vars.SEARCH_SITE_URL }}
+        run: |
+          set -euo pipefail
+          site_url="${SEARCH_SITE_URL:-https://${GITHUB_REPOSITORY_OWNER}.github.io/${GITHUB_REPOSITORY#*/}/}"
+          echo "Merging previous index from: ${site_url}data/"
+          mkdir -p _site
+          cp -r search/. _site/
+          python scripts/build_search_index.py \
+            --opml engineering_blogs.opml \
+            --readme README.md \
+            --out _site \
+            --previous "${site_url}data/"
+          echo "--- summary ---"
+          python -c "import json; s=json.load(open('_site/data/status.json'))['summary']; print(s)"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

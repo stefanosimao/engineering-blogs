@@ -802,6 +802,30 @@
 
 You can find an opml file to import rss feeds here: [engineering_blogs.opml](./engineering_blogs.opml)
 
+# Search across all blogs
+
+The repository ships a small search engine that lets you search one topic across every blog in this list.
+
+* [`scripts/build_search_index.py`](./scripts/build_search_index.py) fetches every RSS feed in `engineering_blogs.opml`, keeps the title, link, date and a short excerpt of each post and writes a compact JSON index (grouped by year) plus a per-feed health report (`data/status.json`). Feeds only expose their most recent posts, so every run merges the previously published index first and the archive grows over time.
+* [`search/index.html`](./search/index.html) is a static page that loads that index and searches it entirely in the browser ([MiniSearch](https://github.com/lucaong/minisearch), no server needed): full-text search over titles, excerpts and tags, with highlighting, filters by category / time range / blog, newest-first browsing and shareable URLs (`?q=...`).
+* [`.github/workflows/search-index.yml`](./.github/workflows/search-index.yml) rebuilds the index every day and publishes the page to GitHub Pages.
+
+One-time setup for a fork: *Settings → Pages → Build and deployment → Source: GitHub Actions*, then run the *Build search index* workflow once (Actions tab). The page is then served at `https://<owner>.github.io/engineering-blogs/`.
+
+To run it locally:
+
+```
+pip install -r scripts/requirements.txt
+python3 scripts/build_search_index.py --opml engineering_blogs.opml --readme README.md --out _site
+cp -r search/. _site/ && python3 -m http.server -d _site 8000   # then open http://localhost:8000/
+```
+
+Because RSS only covers recent posts, the index cannot reach a blog's full archive. For that, create a free [Google Programmable Search Engine](https://programmablesearchengine.google.com/) restricted to these sites: `python3 scripts/google_cse_sites.py` writes the site list (`cse_sites.txt`) and an annotations file to bulk-add them, and pasting the engine's `cx` id into `GOOGLE_CSE_ID` in `search/index.html` adds a full-archive search box to the page.
+
+# Checking links
+
+`python3 scripts/check_links.py --markdown report.md` fetches every blog in the README (and its feed from the OPML), classifies each one as reachable, moved, blocked by bot protection, parked or dead, and reports the latest post date, so unreachable blogs can be fixed or removed.
+
 # Contributing
 
 Contributions welcome! Read the [contribution guidelines](contributing.md) first.

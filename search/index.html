@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Engineering Blogs Search</title>
+<meta name="description" content="Search one topic across the posts of hundreds of engineering, tech and security blogs.">
+<style>
+  :root {
+    color-scheme: light dark;
+    --bg: #ffffff; --fg: #1f2328; --muted: #656d76; --border: #d8dee4; --accent: #0969da;
+    --card: #f6f8fa; --mark: #fff1a8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #0d1117; --fg: #e6edf3; --muted: #8d96a0; --border: #30363d; --accent: #58a6ff; --card: #161b22; --mark: #6b5b00; }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg); }
+  body { font: 16px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; }
+  a { color: var(--accent); }
+  .wrap { max-width: 920px; margin: 0 auto; padding: 28px 16px 64px; }
+  header h1 { font-size: 1.65rem; margin: 0 0 4px; }
+  .sub { color: var(--muted); margin: 0 0 18px; }
+  .searchbox input {
+    width: 100%; font-size: 1.1rem; padding: 12px 14px; border: 1px solid var(--border); border-radius: 8px;
+    background: var(--card); color: var(--fg);
+  }
+  .searchbox input:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 4px; }
+  .filters select, .filters input, .filters button {
+    padding: 7px 9px; border: 1px solid var(--border); border-radius: 6px; background: var(--card); color: var(--fg);
+    font-size: 0.9rem; max-width: 100%;
+  }
+  .filters input { flex: 1 1 160px; min-width: 140px; }
+  .filters button { cursor: pointer; }
+  .status { color: var(--muted); font-size: 0.9rem; margin: 10px 0 14px; min-height: 1.4em; }
+  .result { padding: 14px 0; border-top: 1px solid var(--border); }
+  .result .meta { font-size: 0.84rem; color: var(--muted); display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+  .result .meta a { color: inherit; text-decoration: none; font-weight: 600; }
+  .result .meta a:hover { text-decoration: underline; }
+  .badge { font-size: 0.72rem; padding: 0 7px; border: 1px solid var(--border); border-radius: 999px; line-height: 1.5; }
+  .result h3 { margin: 3px 0 4px; font-size: 1.05rem; line-height: 1.35; font-weight: 600; }
+  .result h3 a { text-decoration: none; }
+  .result h3 a:hover { text-decoration: underline; }
+  .result p { margin: 0; font-size: 0.95rem; opacity: 0.92; }
+  .tags { margin-top: 6px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tags span { font-size: 0.75rem; color: var(--muted); background: var(--card); padding: 0 7px; border-radius: 4px; line-height: 1.6; }
+  mark { background: var(--mark); color: inherit; padding: 0 1px; border-radius: 2px; }
+  .more { text-align: center; margin-top: 18px; }
+  .more button { padding: 10px 18px; border: 1px solid var(--border); border-radius: 8px; background: var(--card); color: var(--fg); font-size: 0.95rem; cursor: pointer; }
+  details.blogs { margin-top: 36px; border-top: 1px solid var(--border); padding-top: 14px; }
+  details.blogs summary { cursor: pointer; color: var(--muted); }
+  .bloglist { columns: 2; column-gap: 28px; font-size: 0.9rem; margin-top: 12px; }
+  @media (max-width: 620px) { .bloglist { columns: 1; } }
+  .bloglist div { break-inside: avoid; padding: 2px 0; }
+  .bloglist a { text-decoration: none; }
+  .bloglist a:hover { text-decoration: underline; }
+  .bloglist .n { color: var(--muted); font-size: 0.8rem; margin-left: 4px; cursor: pointer; }
+  footer { margin-top: 44px; color: var(--muted); font-size: 0.85rem; border-top: 1px solid var(--border); padding-top: 14px; }
+  kbd { font: 0.8em ui-monospace, SFMono-Regular, Menlo, monospace; padding: 1px 5px; border: 1px solid var(--border); border-radius: 4px; }
+  .hidden { display: none; }
+  .gcse { margin-top: 36px; border-top: 1px solid var(--border); padding-top: 14px; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Engineering Blogs Search</h1>
+    <p class="sub" id="sub">Search one topic across hundreds of engineering, tech and security blogs.</p>
+  </header>
+
+  <div class="searchbox">
+    <input id="q" type="search" placeholder="Search a topic, e.g. exactly-once kafka, zero trust, rust async, postgres vacuum…" autocomplete="off" autofocus>
+  </div>
+  <div class="filters">
+    <select id="group" aria-label="Blog category">
+      <option value="">All categories</option>
+      <option value="Companies">Companies</option>
+      <option value="Individuals">Individuals</option>
+      <option value="Technologies">Products / technologies</option>
+    </select>
+    <select id="time" aria-label="Time range">
+      <option value="">Any time</option>
+      <option value="1">Past year</option>
+      <option value="3">Past 3 years</option>
+      <option value="5">Past 5 years</option>
+    </select>
+    <select id="sort" aria-label="Sort order">
+      <option value="relevance">Sort: relevance</option>
+      <option value="date">Sort: newest</option>
+    </select>
+    <input id="blog" list="blog-options" placeholder="Filter by blog…" aria-label="Filter by blog">
+    <datalist id="blog-options"></datalist>
+    <button id="clear" type="button">Clear</button>
+  </div>
+  <div class="status" id="status">Loading index…</div>
+
+  <div id="results"></div>
+  <div class="more hidden" id="more-wrap"><button id="more" type="button">Show more</button></div>
+
+  <details class="blogs" id="blogs">
+    <summary id="blogs-summary">All indexed blogs</summary>
+    <div class="bloglist" id="bloglist"></div>
+  </details>
+
+  <div class="gcse hidden" id="gcse">
+    <h2 style="font-size:1.1rem;margin:0 0 8px">Search the full archives with Google</h2>
+    <p class="sub">A Google Programmable Search Engine restricted to the blogs in this list. It covers every post ever published, not only what the feeds expose.</p>
+    <div class="gcse-search"></div>
+  </div>
+
+  <footer>
+    <p>
+      Built from the public RSS feeds in
+      <a href="https://github.com/kilimchoi/engineering-blogs" id="repo-link">engineering_blogs.opml</a>.
+      Only titles, links and short excerpts are stored, and feeds only expose recent posts, so the archive grows a little every day.
+      Feed health: <a href="data/status.json">data/status.json</a>. Press <kbd>/</kbd> to search.
+    </p>
+  </footer>
+</div>
+
+<script src="vendor/minisearch.min.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  // Optional: paste the "cx" id of a Google Programmable Search Engine to enable full-archive web search.
+  var GOOGLE_CSE_ID = '';
+  var PAGE_SIZE = 40;
+
+  var $ = function (id) { return document.getElementById(id); };
+  var els = {
+    q: $('q'), group: $('group'), time: $('time'), sort: $('sort'), blog: $('blog'), clear: $('clear'),
+    status: $('status'), results: $('results'), more: $('more'), moreWrap: $('more-wrap'), sub: $('sub'),
+    bloglist: $('bloglist'), blogOptions: $('blog-options'), blogsSummary: $('blogs-summary')
+  };
+
+  var blogs = [];          // from manifest
+  var docs = [];           // every indexed post (for browse mode)
+  var loadedPosts = 0, totalPosts = 0, generated = '';
+  var current = [];        // current result list
+  var shown = 0;
+  var note = '';
+  var mini = new MiniSearch({
+    fields: ['title', 'excerpt', 'blogName', 'tags'],
+    storeFields: ['blogId', 'blogName', 'title', 'url', 'date', 'excerpt', 'tags'],
+    searchOptions: {
+      boost: { title: 3, blogName: 2, tags: 1.5 },
+      prefix: true,
+      fuzzy: function (term) { return term.length > 4 ? 0.15 : false; },
+      combineWith: 'AND'
+    }
+  });
+
+  function fmt(n) { return n.toLocaleString('en-US'); }
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
+  function highlight(text, terms) {
+    var safe = esc(text);
+    if (!terms || !terms.length) return safe;
+    var parts = terms.filter(function (t) { return t && t.length > 1; }).map(escRe);
+    if (!parts.length) return safe;
+    return safe.replace(new RegExp('(' + parts.join('|') + ')', 'gi'), '<mark>$1</mark>');
+  }
+  function byDateDesc(a, b) {
+    var da = a.date || '', db = b.date || '';
+    if (da === db) return 0;
+    if (!da) return 1;
+    if (!db) return -1;
+    return da < db ? 1 : -1;
+  }
+
+  // ---------------------------------------------------------------- state <-> url
+  function readState() {
+    var p = new URLSearchParams(location.search);
+    els.q.value = p.get('q') || '';
+    els.group.value = p.get('group') || '';
+    els.time.value = p.get('time') || '';
+    els.sort.value = p.get('sort') || 'relevance';
+    els.blog.value = p.get('blog') || '';
+  }
+  function writeState() {
+    var p = new URLSearchParams();
+    if (els.q.value.trim()) p.set('q', els.q.value.trim());
+    if (els.group.value) p.set('group', els.group.value);
+    if (els.time.value) p.set('time', els.time.value);
+    if (els.sort.value !== 'relevance') p.set('sort', els.sort.value);
+    if (els.blog.value.trim()) p.set('blog', els.blog.value.trim());
+    var qs = p.toString();
+    history.replaceState(null, '', location.pathname + (qs ? '?' + qs : ''));
+  }
+
+  // ---------------------------------------------------------------- search
+  function runSearch() {
+    var q = els.q.value.trim();
+    var hits;
+    note = '';
+    if (q) {
+      hits = mini.search(q);
+      if (!hits.length) {
+        hits = mini.search(q, { combineWith: 'OR' });
+        if (hits.length) note = 'No post matches every word; showing posts that match any of them.';
+      }
+    } else {
+      hits = docs.slice();
+    }
+    var group = els.group.value;
+    var years = parseInt(els.time.value, 10) || 0;
+    var cutoff = '';
+    if (years) {
+      var d = new Date();
+      d.setFullYear(d.getFullYear() - years);
+      cutoff = d.toISOString().slice(0, 10);
+    }
+    var blogFilter = els.blog.value.trim().toLowerCase();
+    if (group || cutoff || blogFilter) {
+      hits = hits.filter(function (h) {
+        var b = blogs[h.blogId];
+        if (group && (!b || b.group !== group)) return false;
+        if (cutoff && (!h.date || h.date < cutoff)) return false;
+        if (blogFilter && (!b || b.name.toLowerCase().indexOf(blogFilter) === -1)) return false;
+        return true;
+      });
+    }
+    if (!q || els.sort.value === 'date') hits.sort(byDateDesc);
+    current = hits;
+    shown = 0;
+    els.results.innerHTML = '';
+    renderMore();
+    renderStatus();
+    writeState();
+  }
+
+  function renderStatus() {
+    var q = els.q.value.trim();
+    var loading = loadedPosts < totalPosts ? ' · loading ' + fmt(loadedPosts) + ' of ' + fmt(totalPosts) + ' posts…' : '';
+    var what = q ? fmt(current.length) + ' result' + (current.length === 1 ? '' : 's') + ' for “' + esc(q) + '”'
+                 : 'Newest posts across all blogs (' + fmt(current.length) + ')';
+    els.status.innerHTML = what + loading + (note ? ' — ' + esc(note) : '');
+  }
+
+  function renderMore() {
+    var frag = document.createDocumentFragment();
+    var end = Math.min(shown + PAGE_SIZE, current.length);
+    for (var i = shown; i < end; i++) frag.appendChild(renderResult(current[i]));
+    shown = end;
+    els.results.appendChild(frag);
+    els.moreWrap.classList.toggle('hidden', shown >= current.length);
+    els.more.textContent = 'Show more (' + fmt(current.length - shown) + ' left)';
+  }
+
+  function renderResult(r) {
+    var b = blogs[r.blogId] || { name: r.blogName, url: '', group: '' };
+    var terms = r.terms || [];
+    var el = document.createElement('article');
+    el.className = 'result';
+    var tags = (r.tags || []).slice(0, 6).map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('');
+    el.innerHTML =
+      '<div class="meta">' +
+        (b.url ? '<a href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(b.name) + '</a>' : '<span>' + esc(b.name) + '</span>') +
+        (b.group ? '<span class="badge">' + esc(b.group) + '</span>' : '') +
+        '<span>' + (r.date ? esc(r.date) : 'undated') + '</span>' +
+      '</div>' +
+      '<h3><a href="' + esc(r.url) + '" target="_blank" rel="noopener">' + highlight(r.title, terms) + '</a></h3>' +
+      (r.excerpt ? '<p>' + highlight(r.excerpt, terms) + '</p>' : '') +
+      (tags ? '<div class="tags">' + tags + '</div>' : '');
+    return el;
+  }
+
+  // ---------------------------------------------------------------- blog list
+  function renderBlogs() {
+    var sorted = blogs.slice().sort(function (a, b) { return a.name.localeCompare(b.name, 'en', { sensitivity: 'base' }); });
+    var indexed = sorted.filter(function (b) { return b.posts > 0; });
+    els.blogsSummary.textContent = 'All indexed blogs (' + fmt(indexed.length) + ' with posts, ' + fmt(blogs.length) + ' feeds)';
+    els.bloglist.innerHTML = sorted.map(function (b) {
+      return '<div><a href="' + esc(b.url || b.feed) + '" target="_blank" rel="noopener">' + esc(b.name) + '</a>' +
+        '<span class="n" data-blog="' + esc(b.name) + '" title="Show posts from this blog">' +
+        (b.posts ? fmt(b.posts) + ' posts' + (b.latest ? ', last ' + esc(b.latest) : '') : 'no posts yet') + '</span></div>';
+    }).join('');
+    els.blogOptions.innerHTML = sorted.map(function (b) { return '<option value="' + esc(b.name) + '">'; }).join('');
+  }
+
+  // ---------------------------------------------------------------- loading
+  function addShard(payload) {
+    var f = payload.fields || ['blog', 'title', 'url', 'date', 'excerpt', 'tags'];
+    var idx = {};
+    f.forEach(function (name, i) { idx[name] = i; });
+    var batch = [];
+    for (var i = 0; i < payload.posts.length; i++) {
+      var row = payload.posts[i];
+      var blogId = row[idx.blog];
+      var b = blogs[blogId];
+      batch.push({
+        id: docs.length + batch.length,
+        blogId: blogId,
+        blogName: b ? b.name : '',
+        title: row[idx.title] || '',
+        url: row[idx.url] || '',
+        date: row[idx.date] || '',
+        excerpt: row[idx.excerpt] || '',
+        tags: row[idx.tags] || []
+      });
+    }
+    mini.addAll(batch);
+    docs = docs.concat(batch);
+    loadedPosts += batch.length;
+  }
+
+  function loadShards(shards) {
+    // newest shards first, a few at a time; results refresh as each one lands
+    var queue = shards.slice();
+    var active = 0, MAX = 3;
+    return new Promise(function (resolve) {
+      function next() {
+        if (!queue.length && !active) return resolve();
+        while (queue.length && active < MAX) {
+          var shard = queue.shift();
+          active++;
+          fetch('data/' + shard.file).then(function (r) { return r.json(); }).then(addShard)
+            .catch(function (e) { console.warn('shard failed', shard.file, e); })
+            .then(function () { active--; runSearch(); next(); });
+        }
+      }
+      next();
+    });
+  }
+
+  function init() {
+    readState();
+    fetch('data/manifest.json', { cache: 'no-cache' }).then(function (r) {
+      if (!r.ok) throw new Error('manifest ' + r.status);
+      return r.json();
+    }).then(function (m) {
+      blogs = m.blogs || [];
+      totalPosts = m.posts || 0;
+      generated = (m.generated || '').slice(0, 10);
+      var withPosts = blogs.filter(function (b) { return b.posts > 0; }).length;
+      els.sub.textContent = fmt(totalPosts) + ' posts from ' + fmt(withPosts) + ' blogs · index updated ' + generated;
+      renderBlogs();
+      return loadShards(m.shards || []);
+    }).then(function () {
+      runSearch();
+    }).catch(function (e) {
+      els.status.textContent = 'The search index could not be loaded (' + e.message + '). ' +
+        'Run scripts/build_search_index.py or the "Build search index" workflow first.';
+    });
+
+    var timer = null;
+    els.q.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(runSearch, 120); });
+    [els.group, els.time, els.sort].forEach(function (el) { el.addEventListener('change', runSearch); });
+    els.blog.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(runSearch, 150); });
+    els.clear.addEventListener('click', function () {
+      els.q.value = ''; els.group.value = ''; els.time.value = ''; els.sort.value = 'relevance'; els.blog.value = '';
+      runSearch(); els.q.focus();
+    });
+    els.more.addEventListener('click', renderMore);
+    els.bloglist.addEventListener('click', function (ev) {
+      var t = ev.target.closest('[data-blog]');
+      if (!t) return;
+      els.blog.value = t.getAttribute('data-blog');
+      runSearch();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === '/' && document.activeElement !== els.q && !/input|select|textarea/i.test(document.activeElement.tagName)) {
+        ev.preventDefault(); els.q.focus();
+      }
+    });
+
+    if (GOOGLE_CSE_ID) {
+      $('gcse').classList.remove('hidden');
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://cse.google.com/cse.js?cx=' + encodeURIComponent(GOOGLE_CSE_ID);
+      document.head.appendChild(s);
+    }
+  }
+
+  init();
+})();
+</script>
+</body>
+</html>
