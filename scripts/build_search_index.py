@@ -227,6 +227,16 @@ def load_previous(base: str | None, blogs: list[dict]) -> tuple[dict, dict]:
 
 
 # ----------------------------------------------------------------------------- fetching
+FEED_MAP: list[tuple[str, str]] = []
+
+
+def local_feed_path(url: str) -> str | None:
+    for prefix, directory in FEED_MAP:
+        if url.startswith(prefix):
+            return os.path.join(directory, url[len(prefix):])
+    return None
+
+
 def fetch_feed(blog: dict, prev: dict | None, excerpt_chars: int) -> dict:
     started = time.time()
     headers = {"User-Agent": UA, "Accept": FEED_ACCEPT}
@@ -238,6 +248,26 @@ def fetch_feed(blog: dict, prev: dict | None, excerpt_chars: int) -> dict:
     result = {"blog": blog["id"], "name": blog["name"], "feed": blog["feed"], "http": None, "ok": False,
               "entries": 0, "latest": "", "error": "", "etag": "", "modified": "", "ms": 0, "posts": []}
     try:
+        local = local_feed_path(blog["feed"])
+        if local is not None:
+            if not os.path.exists(local):
+                result["error"] = "generated feed missing"
+                return result
+            with open(local, "rb") as fh:
+                body = fh.read()
+            result["http"] = 200
+            parsed = feedparser.parse(body)
+            posts = []
+            for e in parsed.get("entries", []):
+                link = (e.get("link") or "").strip()
+                title = strip_html(e.get("title") or "")
+                if link and title:
+                    posts.append({"blog": blog["id"], "title": title[:300], "url": link, "date": entry_date(e),
+                                  "excerpt": excerpt_of(e, excerpt_chars), "tags": entry_tags(e)})
+            result.update(ok=True, entries=len(posts), posts=posts)
+            dates = [p["date"] for p in posts if p["date"]]
+            result["latest"] = max(dates) if dates else ""
+            return result
         resp = requests.get(blog["feed"], headers=headers, timeout=TIMEOUT, allow_redirects=True, stream=True)
         result["http"] = resp.status_code
         if resp.status_code == 304:
@@ -303,9 +333,18 @@ def main() -> int:
     ap.add_argument("--max-age-days", type=int, default=0, help="drop posts older than this (0 = keep everything)")
     ap.add_argument("--min-success", type=float, default=0.25,
                     help="abort (exit 2) if fewer than this fraction of feeds could be fetched")
+    ap.add_argument("--feed-map", action="append", default=[], metavar="PREFIX=DIR",
+                    help="read feeds whose URL starts with PREFIX from local DIR instead of fetching "
+                         "(used for the generated feeds in _site/feeds)")
     ap.add_argument("--limit", type=int, default=0, help="only process the first N feeds (for testing)")
     ap.add_argument("--filter", help="only process blogs whose name contains this text (for testing)")
     args = ap.parse_args()
+
+    for spec in args.feed_map:
+        if "=" not in spec:
+            ap.error("--feed-map expects PREFIX=DIR")
+        prefix, directory = spec.split("=", 1)
+        FEED_MAP.append((prefix, directory))
 
     blogs = load_blogs(args.opml, args.readme)
     if args.filter:

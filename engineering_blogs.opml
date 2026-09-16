@@ -14,6 +14,11 @@
       <outline type="rss" text="Airbnb" title="Airbnb" xmlUrl="https://medium.com/feed/airbnb-engineering" htmlUrl="https://medium.com/airbnb-engineering"/>
       <outline type="rss" text="Akamai Security Research" title="Akamai Security Research" xmlUrl="https://feeds.feedburner.com/akamai/blog" htmlUrl="https://www.akamai.com/blog/security-research"/>
       <outline type="rss" text="Amazon Science" title="Amazon Science" xmlUrl="https://www.amazon.science/index.rss" htmlUrl="https://www.amazon.science/blog"/>
+      <outline type="rss" text="Anthropic Alignment Science" title="Anthropic Alignment Science" xmlUrl="https://stefanosimao.github.io/engineering-blogs/feeds/anthropic-alignment-science.xml" htmlUrl="https://alignment.anthropic.com/"/>
+      <outline type="rss" text="Anthropic Engineering" title="Anthropic Engineering" xmlUrl="https://stefanosimao.github.io/engineering-blogs/feeds/anthropic-engineering.xml" htmlUrl="https://www.anthropic.com/engineering"/>
+      <outline type="rss" text="Anthropic Frontier Red Team" title="Anthropic Frontier Red Team" xmlUrl="https://stefanosimao.github.io/engineering-blogs/feeds/anthropic-frontier-red-team.xml" htmlUrl="https://www.anthropic.com/research/team/frontier-red-team"/>
+      <outline type="rss" text="Anthropic News" title="Anthropic News" xmlUrl="https://stefanosimao.github.io/engineering-blogs/feeds/anthropic-news.xml" htmlUrl="https://www.anthropic.com/news"/>
+      <outline type="rss" text="Anthropic Research" title="Anthropic Research" xmlUrl="https://stefanosimao.github.io/engineering-blogs/feeds/anthropic-research.xml" htmlUrl="https://www.anthropic.com/research"/>
       <outline type="rss" text="Anthropic Transformer Circuits" title="Anthropic Transformer Circuits" xmlUrl="https://transformer-circuits.pub/feed.xml" htmlUrl="https://transformer-circuits.pub/"/>
       <outline type="rss" text="Apple Developer News" title="Apple Developer News" xmlUrl="https://developer.apple.com/news/rss/news.rss" htmlUrl="https://developer.apple.com/news/"/>
       <outline type="rss" text="Apple Machine Learning Research" title="Apple Machine Learning Research" xmlUrl="https://machinelearning.apple.com/rss.xml" htmlUrl="https://machinelearning.apple.com/"/>
@@ -123,15 +128,15 @@
       <outline type="rss" text="Google Cloud" title="Google Cloud" xmlUrl="https://cloudblog.withgoogle.com/rss/" htmlUrl="https://cloud.google.com/blog/"/>
       <outline type="rss" text="Google Cloud Developers &amp; Practitioners" title="Google Cloud Developers &amp; Practitioners" xmlUrl="https://cloudblog.withgoogle.com/topics/developers-practitioners/rss/" htmlUrl="https://cloud.google.com/blog/topics/developers-practitioners"/>
       <outline type="rss" text="Google Cloud Security" title="Google Cloud Security" xmlUrl="https://cloudblog.withgoogle.com/products/identity-security/rss/" htmlUrl="https://cloud.google.com/blog/products/identity-security"/>
-      <outline type="rss" text="Google Cloud Threat Intelligence (Mandiant)" title="Google Cloud Threat Intelligence (Mandiant)" xmlUrl="https://cloudblog.withgoogle.com/topics/threat-intelligence/rss/" htmlUrl="https://cloud.google.com/blog/topics/threat-intelligence"/>
       <outline type="rss" text="Google DeepMind" title="Google DeepMind" xmlUrl="https://deepmind.google/blog/rss.xml" htmlUrl="https://deepmind.google/discover/blog/"/>
       <outline type="rss" text="Google Developers" title="Google Developers" xmlUrl="https://developers.googleblog.com/feeds/posts/default" htmlUrl="https://developers.googleblog.com/"/>
       <outline type="rss" text="Google Open Source" title="Google Open Source" xmlUrl="https://feeds.feedburner.com/GoogleOpenSourceBlog" htmlUrl="https://opensource.googleblog.com/"/>
       <outline type="rss" text="Google Project Zero" title="Google Project Zero" xmlUrl="https://projectzero.google/feed.xml" htmlUrl="https://projectzero.google/"/>
       <outline type="rss" text="Google Research" title="Google Research" xmlUrl="https://research.google/blog/rss/" htmlUrl="https://research.google/blog/"/>
+      <outline type="rss" text="Google Security (The Keyword)" title="Google Security (The Keyword)" xmlUrl="https://blog.google/security/rss/" htmlUrl="https://blog.google/security/"/>
       <outline type="rss" text="Google Security Blog" title="Google Security Blog" xmlUrl="https://security.googleblog.com/feeds/posts/default" htmlUrl="https://security.googleblog.com/"/>
       <outline type="rss" text="Google Testing Blog" title="Google Testing Blog" xmlUrl="http://feeds.feedburner.com/blogspot/RLXA" htmlUrl="https://testing.googleblog.com/"/>
-      <outline type="rss" text="Google Threat Analysis Group" title="Google Threat Analysis Group" xmlUrl="https://blog.google/security/rss/" htmlUrl="https://blog.google/threat-analysis-group/"/>
+      <outline type="rss" text="Google Threat Intelligence Group (Mandiant / TAG)" title="Google Threat Intelligence Group (Mandiant / TAG)" xmlUrl="https://cloudblog.withgoogle.com/topics/threat-intelligence/rss/" htmlUrl="https://cloud.google.com/blog/topics/threat-intelligence"/>
       <outline type="rss" text="GoSquared" title="GoSquared" xmlUrl="https://www.gosquared.com/blog/feed" htmlUrl="https://www.gosquared.com/blog/category/engineering"/>
       <outline type="rss" text="Grab" title="Grab" xmlUrl="http://engineering.grab.com/feed.xml" htmlUrl="http://engineering.grab.com/"/>
       <outline type="rss" text="Grafana Labs" title="Grafana Labs" xmlUrl="https://grafana.com/blog/index.xml" htmlUrl="https://grafana.com/blog/"/>
@@ -170,6 +175,7 @@
       <outline type="rss" text="Klarna" title="Klarna" xmlUrl="https://engineering.klarna.com/feed" htmlUrl="https://engineering.klarna.com/"/>
       <outline type="rss" text="Kogan.com" title="Kogan.com" xmlUrl="https://devblog.kogan.com/blog?format=rss" htmlUrl="https://devblog.kogan.com/"/>
       <outline type="rss" text="LINE" title="LINE" xmlUrl="https://techblog.lycorp.co.jp/en/feed/index.xml" htmlUrl="https://engineering.linecorp.com/en/blog"/>
+      <outline type="rss" text="LinkedIn" title="LinkedIn" xmlUrl="https://stefanosimao.github.io/engineering-blogs/feeds/linkedin-engineering.xml" htmlUrl="https://www.linkedin.com/blog/engineering"/>
       <outline type="rss" text="Localytics" title="Localytics" xmlUrl="https://eng.localytics.com/rss/" htmlUrl="http://eng.localytics.com/"/>
       <outline type="rss" text="Lyft" title="Lyft" xmlUrl="https://eng.lyft.com/feed" htmlUrl="https://eng.lyft.com/"/>
       <outline type="rss" text="Made Tech" title="Made Tech" xmlUrl="https://www.madetech.com/feed/" htmlUrl="https://www.madetech.com/blog"/>
@@ -185,6 +191,7 @@
       <outline type="rss" text="Microsoft Security" title="Microsoft Security" xmlUrl="https://www.microsoft.com/en-us/security/blog/feed/" htmlUrl="https://www.microsoft.com/en-us/security/blog/"/>
       <outline type="rss" text="Miro" title="Miro" xmlUrl="https://medium.com/feed/miro-engineering" htmlUrl="https://medium.com/miro-engineering"/>
       <outline type="rss" text="monday.com" title="monday.com" xmlUrl="https://engineering.monday.com/feed/" htmlUrl="https://engineering.monday.com/"/>
+      <outline type="rss" text="Monzo" title="Monzo" xmlUrl="https://stefanosimao.github.io/engineering-blogs/feeds/monzo-technology.xml" htmlUrl="https://monzo.com/blog/topic/technology"/>
       <outline type="rss" text="Mozilla Automation Team" title="Mozilla Automation Team" xmlUrl="https://planet.mozilla.org/rss20.xml" htmlUrl="https://planet.mozilla.org/ateam/"/>
       <outline type="rss" text="Mozilla Hacks" title="Mozilla Hacks" xmlUrl="https://hacks.mozilla.org/feed/" htmlUrl="https://hacks.mozilla.org/"/>
       <outline type="rss" text="Mozilla Release Engineering" title="Mozilla Release Engineering" xmlUrl="https://planet.mozilla.org/releng/atom.xml" htmlUrl="https://planet.mozilla.org/releng/"/>
@@ -229,6 +236,7 @@
       <outline type="rss" text="Remind" title="Remind" xmlUrl="http://engineering.remind.com/feed.xml" htmlUrl="http://engineering.remind.com/"/>
       <outline type="rss" text="Replit" title="Replit" xmlUrl="https://replit.com/blog/feed.xml" htmlUrl="https://replit.com/blog"/>
       <outline type="rss" text="RetailMeNot" title="RetailMeNot" xmlUrl="https://engineering.ziffmedia.com/feed" htmlUrl="https://medium.com/retailmenot-engineering/"/>
+      <outline type="rss" text="Riot Games" title="Riot Games" xmlUrl="https://stefanosimao.github.io/engineering-blogs/feeds/riot-games-tech.xml" htmlUrl="https://technology.riotgames.com/"/>
       <outline type="rss" text="RisingStack" title="RisingStack" xmlUrl="https://blog.risingstack.com/feed/" htmlUrl="https://blog.risingstack.com/"/>
       <outline type="rss" text="Robert Elder Software" title="Robert Elder Software" xmlUrl="https://blog.robertelder.org/rss" htmlUrl="http://blog.robertelder.org/"/>
       <outline type="rss" text="RoseHosting" title="RoseHosting" xmlUrl="https://www.rosehosting.com/blog/feed/" htmlUrl="https://www.rosehosting.com/blog/"/>
@@ -274,6 +282,7 @@
       <outline type="rss" text="Toptal" title="Toptal" xmlUrl="https://www.toptal.com/blog.rss" htmlUrl="https://www.toptal.com/blog/"/>
       <outline type="rss" text="Trail of Bits" title="Trail of Bits" xmlUrl="https://blog.trailofbits.com/index.xml" htmlUrl="https://blog.trailofbits.com/"/>
       <outline type="rss" text="Traveloka" title="Traveloka" xmlUrl="https://medium.com/feed/traveloka-engineering" htmlUrl="https://medium.com/traveloka-engineering"/>
+      <outline type="rss" text="Trend Micro Research" title="Trend Micro Research" xmlUrl="https://stefanosimao.github.io/engineering-blogs/feeds/trend-micro-research.xml" htmlUrl="https://www.trendmicro.com/en_us/research.html"/>
       <outline type="rss" text="Trivago" title="Trivago" xmlUrl="http://tech.trivago.com/rss.xml" htmlUrl="http://tech.trivago.com/"/>
       <outline type="rss" text="TrueCar" title="TrueCar" xmlUrl="https://medium.com/feed/driven-by-code" htmlUrl="https://www.drivenbycode.com/"/>
       <outline type="rss" text="Tumblr" title="Tumblr" xmlUrl="https://engineering.tumblr.com/rss" htmlUrl="https://engineering.tumblr.com/"/>
@@ -304,6 +313,7 @@
       <outline type="rss" text="Zed" title="Zed" xmlUrl="https://zed.dev/blog.rss" htmlUrl="https://zed.dev/blog"/>
       <outline type="rss" text="Zendesk" title="Zendesk" xmlUrl="https://zendesk.engineering/feed" htmlUrl="https://medium.com/zendesk-engineering"/>
       <outline type="rss" text="Zero Day Initiative" title="Zero Day Initiative" xmlUrl="https://www.thezdi.com/blog?format=rss" htmlUrl="https://www.zerodayinitiative.com/blog"/>
+      <outline type="rss" text="Zomato" title="Zomato" xmlUrl="https://stefanosimao.github.io/engineering-blogs/feeds/zomato-technology.xml" htmlUrl="https://www.zomato.com/blog/category/technology"/>
       <outline type="rss" text="Zscaler ThreatLabz" title="Zscaler ThreatLabz" xmlUrl="https://www.zscaler.com/blogs/feeds" htmlUrl="https://www.zscaler.com/blogs/security-research"/>
       <outline type="rss" text="0xADADA" title="0xADADA" xmlUrl="https://0xadada.pub/rss.xml" htmlUrl="https://0xadada.pub/"/>
       <outline type="rss" text="A List Apart" title="A List Apart" xmlUrl="https://alistapart.com/main/feed/" htmlUrl="https://alistapart.com/"/>

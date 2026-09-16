@@ -1,5 +1,6 @@
-# Builds the cross-blog search index from every RSS feed in engineering_blogs.opml
-# and publishes it (together with search/index.html) to GitHub Pages.
+# Builds the cross-blog search index from every RSS feed in engineering_blogs.opml,
+# generates RSS feeds for the few blogs that publish none (scripts/scraped_feeds.json)
+# and publishes everything (together with search/index.html) to GitHub Pages.
 #
 # One-time setup: repository Settings -> Pages -> "Build and deployment" -> Source: "GitHub Actions".
 # Then run this workflow once by hand (Actions -> "Build search index" -> Run workflow).
@@ -15,6 +16,8 @@ on:
     paths:
       - 'search/**'
       - 'scripts/build_search_index.py'
+      - 'scripts/scrape_feeds.py'
+      - 'scripts/scraped_feeds.json'
       - 'scripts/requirements.txt'
       - 'engineering_blogs.opml'
       - '.github/workflows/search-index.yml'
@@ -58,11 +61,17 @@ jobs:
           echo "Merging previous index from: ${site_url}data/"
           mkdir -p _site
           cp -r search/. _site/
+          echo "--- generating feeds for blogs without RSS ---"
+          python scripts/scrape_feeds.py \
+            --out _site/feeds \
+            --previous "${site_url}feeds/"
+          echo "--- building search index ---"
           python scripts/build_search_index.py \
             --opml engineering_blogs.opml \
             --readme README.md \
             --out _site \
-            --previous "${site_url}data/"
+            --previous "${site_url}data/" \
+            --feed-map "${site_url}feeds/=_site/feeds"
           echo "--- summary ---"
           python -c "import json; s=json.load(open('_site/data/status.json'))['summary']; print(s)"
 

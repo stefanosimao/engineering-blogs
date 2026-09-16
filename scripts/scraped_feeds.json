@@ -1,0 +1,67 @@
+[
+  {
+    "name": "Anthropic Research",
+    "slug": "anthropic-research",
+    "url": "https://www.anthropic.com/research",
+    "link_pattern": "^https://www\\.anthropic\\.com/research/[a-zA-Z0-9-]+$",
+    "exclude": "/research/(team|topic|overview|index)$"
+  },
+  {
+    "name": "Anthropic News",
+    "slug": "anthropic-news",
+    "url": "https://www.anthropic.com/news",
+    "link_pattern": "^https://www\\.anthropic\\.com/news/[a-zA-Z0-9-]+$"
+  },
+  {
+    "name": "Anthropic Engineering",
+    "slug": "anthropic-engineering",
+    "url": "https://www.anthropic.com/engineering",
+    "link_pattern": "^https://www\\.anthropic\\.com/engineering/[a-zA-Z0-9-]+$"
+  },
+  {
+    "name": "Anthropic Alignment Science",
+    "slug": "anthropic-alignment-science",
+    "url": "https://alignment.anthropic.com/",
+    "link_pattern": "^https://alignment\\.anthropic\\.com/\\d{4}/[a-zA-Z0-9-]+/?$"
+  },
+  {
+    "name": "Anthropic Frontier Red Team",
+    "slug": "anthropic-frontier-red-team",
+    "url": "https://www.anthropic.com/research/team/frontier-red-team",
+    "link_pattern": "^https://www\\.anthropic\\.com/research/[a-zA-Z0-9-]+$",
+    "exclude": "/research/(team|topic|overview|index)$"
+  },
+  {
+    "name": "LinkedIn Engineering",
+    "slug": "linkedin-engineering",
+    "url": "https://www.linkedin.com/blog/engineering",
+    "link_pattern": "^https://www\\.linkedin\\.com/blog/engineering/[a-z0-9-]+/[a-z0-9-]+$"
+  },
+  {
+    "name": "Monzo Technology",
+    "slug": "monzo-technology",
+    "url": "https://monzo.com/blog/topic/technology",
+    "link_pattern": "^https://monzo\\.com/blog/[a-z0-9-]+/?$",
+    "exclude": "/blog/(topic|page|tag|category)"
+  },
+  {
+    "name": "Riot Games Tech Blog",
+    "slug": "riot-games-tech",
+    "url": "https://www.riotgames.com/en/news?q=tech%20blog",
+    "link_pattern": "^https://www\\.riotgames\\.com/en/news/[a-z0-9-]+$"
+  },
+  {
+    "name": "Trend Micro Research",
+    "slug": "trend-micro-research",
+    "url": "https://www.trendmicro.com/en_us/research.html",
+    "link_pattern": "^https://www\\.trendmicro\\.com/en_us/research/\\d{2}/[a-z]/[a-z0-9-]+\\.html$"
+  },
+  {
+    "name": "Zomato Technology",
+    "slug": "zomato-technology",
+    "url": "https://www.zomato.com/blog/category/technology",
+    "link_pattern": "^https://www\\.zomato\\.com/blog/[a-z0-9-]+/?$",
+    "exclude": "/blog/(category|page|tag|author)",
+    "include_text": "\\btechnology\\b"
+  }
+]

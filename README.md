@@ -167,15 +167,15 @@
 * Google Cloud https://cloud.google.com/blog/
 * Google Cloud Developers & Practitioners https://cloud.google.com/blog/topics/developers-practitioners
 * Google Cloud Security https://cloud.google.com/blog/products/identity-security
-* Google Cloud Threat Intelligence (Mandiant) https://cloud.google.com/blog/topics/threat-intelligence
 * Google DeepMind https://deepmind.google/discover/blog/
 * Google Developers https://developers.googleblog.com/
 * Google Open Source https://opensource.googleblog.com/
 * Google Project Zero https://projectzero.google/
 * Google Research https://research.google/blog/
+* Google Security (The Keyword) https://blog.google/security/
 * Google Security Blog https://security.googleblog.com/
 * Google Testing Blog https://testing.googleblog.com/
-* Google Threat Analysis Group https://blog.google/threat-analysis-group/
+* Google Threat Intelligence Group (Mandiant / TAG) https://cloud.google.com/blog/topics/threat-intelligence
 * GoSquared https://www.gosquared.com/blog/category/engineering
 * Grab http://engineering.grab.com/
 * Grafana Labs https://grafana.com/blog/
@@ -863,6 +863,7 @@ The repository ships a small search engine that lets you search one topic across
 * [`scripts/build_search_index.py`](./scripts/build_search_index.py) fetches every RSS feed in `engineering_blogs.opml`, keeps the title, link, date and a short excerpt of each post and writes a compact JSON index (grouped by year) plus a per-feed health report (`data/status.json`). Feeds only expose their most recent posts, so every run merges the previously published index first and the archive grows over time.
 * [`search/index.html`](./search/index.html) is a static page that loads that index and searches it entirely in the browser ([MiniSearch](https://github.com/lucaong/minisearch), no server needed): full-text search over titles, excerpts and tags, with highlighting, filters by category / time range / blog, newest-first browsing and shareable URLs (`?q=...`).
 * [`.github/workflows/search-index.yml`](./.github/workflows/search-index.yml) rebuilds the index every day and publishes the page to GitHub Pages.
+* [`scripts/scrape_feeds.py`](./scripts/scrape_feeds.py) generates RSS feeds for the few blogs that publish none (Anthropic's research, news, engineering, alignment-science and red-team pages, LinkedIn Engineering, Monzo, Riot Games, Trend Micro Research, Zomato; see [`scripts/scraped_feeds.json`](./scripts/scraped_feeds.json)). It reads each blog's listing page, keeps the previous run's items so a feed never empties, and the workflow publishes the result under `https://<owner>.github.io/engineering-blogs/feeds/<slug>.xml`. The OPML points at those URLs, so they work once the Pages site is live.
 
 One-time setup for a fork: *Settings → Pages → Build and deployment → Source: GitHub Actions*, then run the *Build search index* workflow once (Actions tab). The page is then served at `https://<owner>.github.io/engineering-blogs/`.
 
